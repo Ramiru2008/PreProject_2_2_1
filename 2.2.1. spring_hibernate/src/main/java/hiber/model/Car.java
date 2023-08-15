@@ -5,13 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Car {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Id
     @Column(name = "id")
@@ -26,6 +19,15 @@ public class Car {
     @OneToOne(mappedBy = "car")
     private User user;
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
+    }
+
     public Car() {
     }
 
@@ -33,6 +35,16 @@ public class Car {
         this.model = model;
         this.series = series;
     }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getModel() {
         return model;
@@ -50,12 +62,11 @@ public class Car {
         this.series = series;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", series=" + series +
-                '}';
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
